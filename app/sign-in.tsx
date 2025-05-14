@@ -27,6 +27,7 @@ const Login = () => {
         setErrors({ ...errors, [key]: '' });
     };
 
+
     const handleLogin = async () => {
         setLoading(true);
         setErrors({
@@ -38,6 +39,7 @@ const Login = () => {
             const response = await axionsInstance.post('/api/login', data);
             await signIn(response.data.token, response.data.user);
             router.replace('/');
+
         } catch (error) {
             if (axios.isAxiosError(error)) {
                 const responseData = error.response?.data;
@@ -72,6 +74,8 @@ const Login = () => {
 
             <Text className={`text-3xl font-bold mb-5 ${currentTheme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
                 Login</Text>
+
+
 
             < Input
                 placeholder='Email'
